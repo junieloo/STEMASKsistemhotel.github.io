@@ -1,0 +1,346 @@
+<html>
+<head>
+  <title>Pembayaran</title>
+
+
+<style type=text/css>
+body{margin:0 auto; width:1000px; position:relative;}
+div.navMENU{ 
+   width:110%; 
+   height:50px;
+}
+div.navMENU ul{
+   list-style-type:none;
+   padding:0px; 
+   margin:0;
+}
+div.navMENU li{
+   float:left;
+   padding:5px;
+   margin:0px;
+}
+div.navMENU a{
+   display:block;
+   width:150px;
+   border-radius:10px;
+  -moz-border-radius:10px;
+  -webkit-border:10px;
+}
+.navMENU a:link{
+   font-weight:bold;
+   color:black;
+   background-color:lightsteelblue;
+   text-align:center; 
+   text-decoration:none;
+   padding:5px;
+}
+.navMENU a:hover{
+   background-color:cornflowerblue;
+}
+.tarikh{
+  width:100%;
+  height:260px;
+  border:2px solid silver;
+}
+.daftar-masuk{
+   margin-left:5px;
+   float:left;
+}
+.daftar-keluar{
+   margin-right:5px;
+   float:right;
+   height:700px;
+   width:500px;
+}
+.jenis-perlancongan{
+   float:left;
+}
+.pil-ihan{
+   width:150px;
+}
+.bilik{
+  border: 2px solid silver;
+  float：left；
+  height:800px;
+  width:500px;
+  margin-left:0px;
+  margin-right:0px;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+.per-bilik{
+  flex:0.25;
+  border: 3px solid silver;
+  margin-top:10px;
+  margin-bottom:10px;
+  margin-left:5px;
+  margin-right:5px;
+  height:
+}
+.bilik-gam>img{
+   width:230px;
+   height:130px;
+   object-fit:cover;
+   float:left;
+   margin-right:10px;
+}
+.bilik-gam>img:hover {
+   transform:scale(1.04);
+}
+.bilik-info{
+   margin-left:10px;
+   padding:0px;
+   width:500px;
+}
+.bilangan, .bilik-info-num{
+
+}
+.bilik-info-num{
+   width:35px;
+
+}
+.bilik-jum{
+   margin-left:5px;
+}
+.bayar{
+  border:1px solid white lilac;
+  max-width:400px;
+  width:1000px;
+  height:350px;
+  margin-left:0px;
+  margin-right:0px;
+  margin-top:10px;
+
+}
+.next{
+ width: 200px;
+}
+</style>
+<script>
+   function calc() {
+    var d1=parseInt(document.getElementById('hbm').value);
+    var m1=parseInt(document.getElementById('bm').value);
+    var y1=parseInt(document.getElementById('tm').value);
+    var d2=parseInt(document.getElementById('hbk').value);
+    var m2=parseInt(document.getElementById('bk').value);
+    var y2=parseInt(document.getElementById('tk').value);
+    if(m2<m1 || y2<y1|| d2<d1){
+     return alert("Sila masukkan tarikh daftar yang betul.");
+    }
+    if (d2<d1 && m2===1){
+      y2=y2-1;
+      m2=m2-1;
+      d2=d+31;
+    }
+    else if (d2<d1 && m2===3){
+      m2=m2-1;
+      d2=d2+31;
+    } 
+    else if (d2<d1 && m2===5){
+      m2=m2-1;
+      d2=d2+31;
+    } 
+    else if (d2<d1 && m2===7){
+      m2=m2-1;
+      d2=d2+31;
+    }
+    else if (d2<d1 && m2===8){
+      m2=m2-1;
+      d2=d2+31;
+    } 
+    else if (d2<d1 && m2===10){
+      m2=m2-1;
+      d2=d2+31;
+    } 
+    else if (d2<d1 && m2===12){
+      m2=m2-1;
+      d2=d2+31;
+    } 
+    else if (d2<d1 && m2===4){
+      m2=m2-1;
+      d2=d2+30;
+    }
+    else if (d2<d1 && m2===6){
+      m2=m2-1;
+      d2=d2+30;
+    } 
+    else if (d2<d1 && m2===9){
+      m2=m2-1;
+      d2=d2+30;
+    } 
+    else if (d2<d1 && m2===11){
+      m2=m2-1;
+      d2=d2+30;
+    }
+    else if (d2<d1 && m2===2){
+      m2=m2-1;
+      d2=d2+28;
+    } 
+    else {
+      m2=m2;
+      d2=d2;
+    }
+    var year=y2-y1;
+    var month=m2-m1;
+    var day=d2-d1;
+    var mtod= month*30;
+    var ytod= year*365;
+    var totalday=ytod+mtod+day;
+   
+    var biljunior=parseInt(document.getElementById('bj').value);
+    var bildeluxe=parseInt(document.getElementById('bd').value);
+    var bilsuperior=parseInt(document.getElementById('bs').value);
+    var jp= document.getElementById('jenis perlancongan').value;
+    
+    
+     
+    var jum=150*biljunior*totalday+190*bildeluxe*totalday+270*bilsuperior*totalday;
+    if (jp ==='bulan madu'){
+    document.getElementById("jum1").value=(jum-(jum*10/100));
+    return alert("Tahniah! Anda telah menerima diskaun bulan madu sebanyak 10%");
+    }
+    else if (jp ==='keluarga'){
+    document.getElementById("jum1").value=(jum-(jum*5/100));
+    return alert("Tahniah! Anda telah menerima diskaun keluarga sebanyak 5%");
+    }
+    else {
+    document.getElementById("jum1").value=(jum);
+    document.getElementById("jum2").value="Tahniah!Anda telah berjaya menempah bilik hotel anda";
+    }
+}
+        </script>
+
+
+ <script>
+   function tahniah(){
+   var nombor=document.getElementById('no').value
+   var kata= document.getElementById('password').value
+   if (nombor===''|| kata===''){
+    return alert("Sila isi maklumat di bawah.");
+   }
+    else{
+    document.getElementById('jawapan').value="Tempahan anda sudah berjaya! Terima kasih kerana memilh hotel kami."
+    }
+}
+  </script>
+</head>
+
+<body style="background-color:#F5EEF8;">
+<center>
+<banner>
+<img src="https://www.lcnpartners.com/wp-content/uploads/2018/11/LCN-footer.png" style="width:600px;height:200px">
+</banner>
+</center>
+<hr/>
+<center>
+<p style="font-size:25px">JALAN RAJA DIHILIR,31350 IPOH,PERAK,MALAYSIA</p>
+<p style="font-size:25px">SILA HUBUNGI<strong> 05-232 8888</strong> UNTUK SEBARANG PERTANYAAN ATAU SOALAN.</p>
+</center>
+<h1 style="text-align:center">Sila pilih menu yang anda ingin memahami</h1>
+
+<div class="navMENU">
+<ul> 
+    <li><a href="LCN's Hotel.html">Utama</a></li>
+    <li><a href="per penilaian.html">Tentang kami</a></li>
+    <li><a href="per tentang bilik.html">Bilik</a></li>
+    <li><a href="per kemudahan.html">Kemudahan</a></li>
+    <li><a href="per pendaftaran.html">Tempahan</a></li>
+</ul>
+
+</div>
+<hr/>
+<div class="all">
+<h1>Pembayaran</h1>
+
+<h2>Sila mengisi maklumat anda di ruang kosong</h2>
+<div class="tarikh">
+  <div class="daftar-masuk">
+   <p style="font-size:20px">Sila masukkan tarikh daftar masuk :</p>
+      <input type="number" id="hbm" value="" placeholder="12" <p>hari bulan</p>
+      <input type="number" id="bm" value="" placeholder="7"<p>bulan</p> 
+      <input type="number" id="tm" value="" placeholder="2021"<p>tahun</p>
+  </div>
+
+ <div class="daftar-keluar">
+   <p style="font-size:20px">Sila masukkan bulan hari daftar keluar anda : </p>
+      <input type="number" id="hbk" value="" placeholder="13"<p>hari</p> 
+      <input type="number" id="bk" value="" placeholder="7"<p>bulan</p> 
+      <input type="number" id="tk" value=""  placeholder="2021"<p>tahun</p>
+ </div>
+  <div class="jenis-perlancongan">
+    <p style="font-size:20px"> Sila pilih jenis perlancongan anda :
+          <select id="jenis perlancongan" class="pil-ihan">
+             <option value="bulan madu">bulan madu</option>
+             <option value="keluarga">keluarga</option>
+             <option value="pasangan">pasangan</option>
+             <option value="bisnes">bisnes</option>
+             <option value="solo">solo</option>
+       </select></p>
+</div>
+</div>
+
+
+<div class="bilik">
+
+<div class="per-bilik">
+ <div class="bilik-gam">
+      <img src="https://th.bing.com/th/id/OIP.jMSJ2jBth7R0SbYBwK197wHaE8?w=273&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7.jpeg">
+ </div>
+   <div class="bilik-info">
+      <h2 class="bilik-nama">Bilik junior</h2>
+      <h4 class="bilik-harga">MYR150</h4>
+      <h4 class="bilik-luas">20 meter persegi</h4>
+      <p style="font-size:15px" class="bilangan"> Bilangan:
+        <input class="bilik-info-num" type="number" id="bj" value=""/></p>
+     </div>
+  </div>
+
+<div class="per-bilik">
+ <div class="bilik-gam">
+      <img src="https://th.bing.com/th/id/OIP.0SfhIJiD-zWG7PXuLhYhMwHaEH?w=279&h=180&c=7&r=0&o=5&dpr=1.25&pid=1.7.jpeg">
+ </div>
+   <div class="bilik-info">
+      <h2 class="bilik-nama">Bilik deluxe</h2>
+      <h4 class="bilik-harga">MYR190</h4>
+      <h4 class="bilik-luas">23 meter persegi</h4>
+      <p style="font-size:15px" class="bilangan"> Bilangan:
+        <input class="bilik-info-num" type="number" id="bd" value=""/></p>
+     </div>
+  </div>
+
+<div class="per-bilik">
+ <div class="bilik-gam">
+      <img src="https://webbox.imgix.net/images/odrmahyuouaozwrc/33a40896-f20e-41e1-9991-b957be7b28ff.jpg?auto=format,compress&fit=crop&crop=entropy.jpeg">
+ </div>
+   <div class="bilik-info">
+      <h2 class="bilik-nama">Bilik superior</h2>
+      <h4 class="bilik-harga">MYR270</h4>
+      <h4 class="bilik-luas">30 meter persegi</h4>
+      <p style="font-size:15px" class="bilangan"> Bilangan:
+        <input class="bilik-info-num" type="number" id="bs" value=""/></p>
+     </div>
+ </div>
+ <button onclick="calc();">Jumlah harga ialah: 	MYR</button>
+<input type="text" id="jum1" class="bilik-jum">
+<textarea rows="5" cols="30" type="text" id="jum2"></textarea> 
+</div>
+       
+</div>
+<div class="bayar">
+  <h2>Bayaran secara talian </h2>
+  <h2> Sila masukkan maklumat di bawah untuk melengkapkan tempahan anda</h2>
+  <p style="font-size:18px">Nombor akaun :
+  <input type="number" id="no"></p>
+    <p style="font-size:18px">Kata laluan :
+     <input type="password" id="pass"></p>
+  <div class="next">
+<button><a href="Terima Kasih.html">Bayar</button>
+</div>
+</div>
+
+</div>
+
+
+
+</body>
+</html>
